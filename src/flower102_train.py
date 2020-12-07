@@ -50,11 +50,6 @@ hyp_param={'debug':False,
            'seed':42,
            'model_name':'effb0', #resnet18, resnet34, resnet50, resnext50, se_resnext50
            }
-# "0": "Cassava Bacterial Blight (CBB)", 
-# "1": "Cassava Brown Streak Disease (CBSD)", 
-# "2": "Cassava Green Mottle (CGM)", 
-# "3": "Cassava Mosaic Disease (CMD)", 
-# "4": "Healthy"
 
 #device=torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
