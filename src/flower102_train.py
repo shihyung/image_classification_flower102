@@ -48,7 +48,7 @@ hyp_param={'debug':False,
            'target_size':102,
            'target_col':'label',
            'seed':42,
-           'model_name':'effb0', #resnet18, resnet34, resnet50, resnext50, se_resnext50
+           'model_name':'effb0', #resnet18, resnet50, se_resnext50, effb0
            }
 
 #device=torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -216,17 +216,9 @@ class nn_model(torch.nn.Module):
             self.model=pretrainedmodels.se_resnext50_32x4d(num_classes=1000, pretrained='imagenet' if pretrained else None)
             self.model.avg_pool=torch.nn.AdaptiveAvgPool2d((1,1))
             self.model.last_linear=torch.nn.Linear(self.model.last_linear.in_features, hyp_param['target_size'])
-        elif hyp_param['model_name']=='resnext50':
-            print('Model: < Resnext50_32x4d >')
-            self.model=torchvision.models.resnext50_32x4d(pretrained=pretrained)
-            self.model.fc=torch.nn.Linear(self.model.fc.in_features, hyp_param['target_size'])
         elif hyp_param['model_name']=='resnet50':
             print('Model: < Resnet50 >')
             self.model=torchvision.models.resnet50(pretrained=pretrained)
-            self.model.fc=torch.nn.Linear(self.model.fc.in_features, hyp_param['target_size'])
-        elif hyp_param['model_name']=='resnet34':
-            print('Model: < Resnet34 >')
-            self.model=torchvision.models.resnet34(pretrained=pretrained)
             self.model.fc=torch.nn.Linear(self.model.fc.in_features, hyp_param['target_size'])
         elif hyp_param['model_name']=='resnet18':
             print('Model: < Resnet18 >')
